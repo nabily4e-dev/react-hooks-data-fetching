@@ -1,3 +1,5 @@
+<!-- @format -->
+
 # Data Fetching in React
 
 ## Learning Goals
@@ -57,13 +59,13 @@ data stored in state. A very simple implementation of the App component with
 `fetch` might look like this:
 
 ```jsx
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 
 function App() {
   const [peopleInSpace, setPeopleInSpace] = useState([]);
 
   useEffect(() => {
-    fetch("http://api.open-notify.org/astros.json")
+    fetch('http://api.open-notify.org/astros.json')
       .then((response) => response.json())
       .then((data) => {
         setPeopleInSpace(data.people);
@@ -105,7 +107,7 @@ function App() {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    fetch("http://api.open-notify.org/astros.json")
+    fetch('http://api.open-notify.org/astros.json')
       .then((response) => response.json())
       .then((data) => {
         setPeopleInSpace(data.people);
@@ -127,7 +129,7 @@ them into events:
 
 ```jsx
 function handleClick() {
-  fetch("your API url")
+  fetch('your API url')
     .then((res) => res.json())
     .then((json) => setData(json));
 }
@@ -157,8 +159,8 @@ Setting up a React controlled form, we can structure our state in the same way:
 ```jsx
 function Form() {
   const [formData, setFormData] = useState({
-    username: "",
-    password: "",
+    username: '',
+    password: '',
   });
 
   //since the id values are the same as the keys in formData, we can write an abstract setFormData here
@@ -172,14 +174,14 @@ function Form() {
   return (
     <form onSubmit={handleSubmit}>
       <input
-        type="text"
-        id="username"
+        type='text'
+        id='username'
         value={formData.username}
         onChange={handleChange}
       />
       <input
-        type="text"
-        id="password"
+        type='text'
+        id='password'
         value={formData.password}
         onChange={handleChange}
       />
@@ -194,10 +196,10 @@ within the body, as there are no other values:
 ```jsx
 function handleSubmit(event) {
   event.preventDefault();
-  fetch("the server URL", {
-    method: "POST",
+  fetch('the server URL', {
+    method: 'POST',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
     body: JSON.stringify(formData),
   });
@@ -216,7 +218,7 @@ approach:
 
 ```js
 useEffect(() => {
-  fetch("/api")
+  fetch('/api')
     .then((r) => r.json())
     .then(setData);
 }, []);
